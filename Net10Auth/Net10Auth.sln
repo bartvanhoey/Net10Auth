@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net10Auth.API", "Net10Auth.API\Net10Auth.API.csproj", "{BABFB3D6-787C-43DB-A998-73C232F215C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net10Auth.Shared", "Net10Auth.Shared\Net10Auth.Shared.csproj", "{35301B1A-5B6F-437D-860C-1F9605585932}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BABFB3D6-787C-43DB-A998-73C232F215C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BABFB3D6-787C-43DB-A998-73C232F215C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BABFB3D6-787C-43DB-A998-73C232F215C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BABFB3D6-787C-43DB-A998-73C232F215C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35301B1A-5B6F-437D-860C-1F9605585932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35301B1A-5B6F-437D-860C-1F9605585932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35301B1A-5B6F-437D-860C-1F9605585932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35301B1A-5B6F-437D-860C-1F9605585932}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

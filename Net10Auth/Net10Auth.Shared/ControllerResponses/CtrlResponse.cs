@@ -1,4 +1,4 @@
-namespace Net10Auth.API.Controllers;
+namespace Net10Auth.Shared.ControllerResponses;
 
 public class CtrlResponse<T>(bool isSuccess, string? message, T? data)
 {

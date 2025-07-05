@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Net10Auth.Shared.ControllerResponses;
 using Net10Auth.Shared.Infrastructure.Extensions;
 using Net10Auth.Shared.Infrastructure.Functional.Errors;
 using static Microsoft.AspNetCore.Http.StatusCodes;

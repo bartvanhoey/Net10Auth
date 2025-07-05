@@ -1,4 +1,5 @@
 ﻿using Microsoft.Identity.Client;
+using Net10Auth.API.Services.Login;
 using Net10Auth.API.Services.Register;
 using Net10Auth.Shared.Infrastructure;
 
@@ -14,6 +15,7 @@ public static class ServicesRegistration
         // builder.Services.AddScoped<IUserApiService, UserApiService>();
         // builder.Services.AddScoped<Encryptor>();
          builder.Services.AddScoped<IRegisterService, RegisterService>();
+         builder.Services.AddScoped<ILoginService, LoginService>();
     }
     
  

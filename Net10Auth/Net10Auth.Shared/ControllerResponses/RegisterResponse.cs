@@ -1,4 +1,4 @@
-namespace Net10Auth.API.Controllers.Identity;
+namespace Net10Auth.Shared.ControllerResponses;
 
 public class RegisterResponse(string? code, string? userId)
 {

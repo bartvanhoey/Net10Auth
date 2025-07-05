@@ -1,10 +1,8 @@
-using static Microsoft.AspNetCore.Http.StatusCodes;
-
 // ReSharper disable MemberCanBePrivate.Global
 
-namespace Net10Auth.API.Controllers.Identity;
+namespace Net10Auth.Shared.ControllerResponses;
 
-public class LoginResponse : IControllerResponse
+public class LoginResponse 
 {
     public LoginResponse()
     {
@@ -18,20 +16,15 @@ public class LoginResponse : IControllerResponse
         ValidTo = validTo;
         TwoFactorEnabled = twoFactorEnabled;
         Token = token;
-        StatusCode = Status200OK;
     }
 
     public string? AccessToken { get; set; }
     public string? RefreshToken { get; set; }
     public DateTime ValidTo { get; set; }
     public bool TwoFactorEnabled { get; set; }
-
-    public int StatusCode { get; set; }
-    public string? Message { get; set; }
-    
     public string? Token { get; set; }
 
-    public IEnumerable<ControllerResponseError>? Errors { get; set; }
+
 }
 
 public class ControllerResponseError

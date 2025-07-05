@@ -4,6 +4,10 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using Net10Auth.API.Controllers.Identity;
+using Net10Auth.Shared.Infrastructure;
+using Net10Auth.Shared.Infrastructure.Extensions;
+using Net10Auth.Shared.Infrastructure.Functional;
 
 namespace Net10Auth.API.Database;
 
@@ -28,8 +32,7 @@ public static class ApplicationUserExtensions
 
 
     public static async Task<(string accessToken, DateTime validTo)> GenerateAccessToken(this ApplicationUser user,
-        UserManager<ApplicationUser> userManager, IConfiguration configuration, string jwtValidIssuer,
-        string jwtValidAudience, string jwtSecurityKey)
+        UserManager<ApplicationUser> userManager, JwtConfiguration jwt, HttpRequest httpRequest)
     {
         var authClaims = new List<Claim>
         {
@@ -45,19 +48,25 @@ public static class ApplicationUserExtensions
         var userClaims = await userManager.GetClaimsAsync(user);
         authClaims.AddRange(userClaims);
 
-        var expiryInSeconds = configuration["Jwt:AccessTokenExpiryInSeconds"] ??
-                              throw new InvalidOperationException("AccessTokenExpiryInSeconds not set");
-
+        var origin = httpRequest.Headers.Origin.FirstOrDefault();
+        if (origin.IsNullOrWhiteSpace() || !jwt.ValidAudiences.Contains(origin ?? throw new InvalidOperationException()))
+            throw new InvalidOperationException("Invalid audience");
+        
         var token = new JwtSecurityToken(
-            jwtValidIssuer,
-            jwtValidAudience,
-            expires: DateTime.UtcNow.AddSeconds(double.Parse(expiryInSeconds)), // 1 hour = 3600 sec
+            jwt.ValidIssuer,
+            origin,
+            expires: DateTime.UtcNow.AddSeconds(double.Parse(jwt.AccessTokenExpiryInSeconds)), // 1 hour = 3600 sec
             claims: authClaims,
-            signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecurityKey)),
+            signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.SecurityKey)),
                 SecurityAlgorithms.HmacSha256)
         );
-        
         return (new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo);
+
+
+
+
+
+
     }
 
 

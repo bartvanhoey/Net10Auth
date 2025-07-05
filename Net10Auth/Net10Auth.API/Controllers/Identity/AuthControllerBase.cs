@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Net10Auth.API.Database;
+using Net10Auth.Shared.ControllerResponses;
 using Net10Auth.Shared.Infrastructure.Extensions;
 using Net10Auth.Shared.Infrastructure.Functional;
 using Net10Auth.Shared.Models;

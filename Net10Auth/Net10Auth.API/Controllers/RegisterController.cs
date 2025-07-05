@@ -1,21 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using Net10Auth.API.Controllers.Base;
 using Net10Auth.API.Database;
 using Net10Auth.API.Services.Register;
 using Net10Auth.Shared.Models.Identity;
 using static System.Activator;
 
-namespace Net10Auth.API.Controllers.Identity;
-
-public static class CtrlResponseExtensions
-{
-    public static CtrlResponse<TR> IfFailureLogErrorMessage<T, TR>(this CtrlResponse<TR> response,
-        ILogger<T> logger)
-    {
-        if (response.IsSuccess) return response;
-        logger.LogError(response.Message);
-        return response;
-    }
-}
+namespace Net10Auth.API.Controllers;
 
 [ApiController]
 [Route("api/account")]
